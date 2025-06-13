@@ -6,6 +6,7 @@ import MovieCard from "./pages/MovieCard"
 import About from "./pages/About"
 import DirectorForm from "./pages/DirectorForm"
 import MovieForm from "./pages/MovieForm"
+import DirectorList from "./pages/DirectorList";
 
 const App = () => {
     return (
@@ -14,11 +15,12 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/directors" element={<DirectorContainer />} >
+                    <Route index element={<DirectorList />} /> 
                     <Route path="new" element={<DirectorForm />}/>
-                    <Route path=":id" element={<DirectorCard />} />
+                    <Route path=":id" element={<DirectorCard />} >
                         <Route path="movies/:movieId" element={<MovieCard />} />
                         <Route path="movies/new" element={<MovieForm />}/>
-                    <Route />
+                    </Route >
                 </Route>
                 <Route path="/about" element={<About />} />
             </Routes>
