@@ -20,7 +20,7 @@ const DirectorContainer = () => {
             <NavBar />
             <main>
                 <h1>Welcome to the Director's Directory!</h1>
-                <Outlet />
+                <Outlet context={{directors}}/>
             </main>
         </>
     );
