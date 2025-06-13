@@ -1,13 +1,15 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
+import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 
 function MovieForm() {
   const [title, setTitle] = useState("")
   const [time, setTime] = useState("")
   const [genres, setGenres] = useState("")
 
-  // Replace me
-  const director = null
+  const {id} = useParams()
+  const {director} = useOutletContext()
+  const navigate = useNavigate()
   
   if (!director) { return <h2>Director not found.</h2>}
 
@@ -34,6 +36,7 @@ function MovieForm() {
       console.log(data)
       // handle context/state changes
       // navigate to newly created movie page
+      navigate(`/directors/${id}/movies/${newMovie.id}`)
     })
     .catch(console.log)
   }
